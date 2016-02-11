@@ -5,7 +5,7 @@
 Begin by installing this package through Composer. Just run following command to terminal-
 
 ```
-composer require riasad/number-converter
+composer require riasad/number-converter dev-master
 ```
 
 Next step is to add the service provider. 
