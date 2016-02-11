@@ -1,6 +1,8 @@
 {
     "name": "riasad/number-converter",
-    "description": "",
+    "description": "Number to word, roman, ordinal converter",
+    "keywords": ["laravel","numberconverter","roman numerical","ordinal numbers"],
+    "license":"MIT",
     "authors": [
         {
             "name": "Riasad Tasha",
