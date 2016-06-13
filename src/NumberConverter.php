@@ -1,15 +1,12 @@
 <?php
 
-namespace NumberConverter;
-
-use Riasad\NumberConverter\ToWord;
-use Riasad\NumberConverter\ToOrdinal;
-use Riasad\NumberConverter\ToRoman;
+namespace LaravelNumberConverter;
 
 class NumberConverter
 {
+
     /**
-     * Eror codes.
+     * Error codes.
      * 
      * @var array
      */
@@ -29,35 +26,35 @@ class NumberConverter
      * @param  string $type
      * @return string   
      */
-    public static function convert($number = '', $type = '')
+    public function convert($number = '', $type = '')
     {
         if (strlen($type) > 1) {
             $type = $type[0];
         }
         $type = strtolower($type);
 
-        if (self::checkParamaters($number, $type) > 0) {
+        if ($this->checkParamaters($number, $type) > 0) {
             return self::$error_codes[$check];
         }
 
         switch ($type) {
             case 'w':
-                return self::convertToWord($number);
+                return $this->convertToWord($number);
             case 'o':
-                return self::convertToOrdinal($number);
+                return $this->convertToOrdinal($number);
             case 'r':
-                return self::convertToRoman($number);
+                return $this->convertToRoman($number);
         }
     }
 
     /**
      * Check provided paramaters.
      * 
-     * @param  [type] $number [description]
-     * @param  [type] $type   [description]
-     * @return [type]         [description]
+     * @param  int $number
+     * @param  string $type
+     * @return int
     */
-    private static function checkParamaters($number, $type)
+    private function checkParamaters($number, $type)
     {
         if ($number === '' || !is_numeric($number))     
             return 101;
@@ -91,7 +88,7 @@ class NumberConverter
      * @param  int $number
      * @return string
      */
-    private static function convertToOrdinal($number)
+    private function convertToOrdinal($number)
     {
         if (!in_array(($number % 100), [11,12,13])) {
             switch ($number % 10) {
@@ -112,7 +109,7 @@ class NumberConverter
      * @param  int $number
      * @return string
      */
-    private static function convertToRoman($number)
+    private function convertToRoman($number)
     {
             $roman_number = "";
  
@@ -191,7 +188,7 @@ class NumberConverter
      * @param  int $number
      * @return string
      */
-    public function convertToWord($number)
+    private function convertToWord($number)
     {
         $hyphen      = '-';
         $conjunction = ' and ';

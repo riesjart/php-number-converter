@@ -1,10 +1,10 @@
 <?php
 
-namespace NumberConverter\Facades;
+namespace LaravelNumberConverter\Facades;
  
 use Illuminate\Support\Facades\Facade;
  
-class NumberConverter extends Facade
+class LaravelNumberConverter extends Facade
 {
  
     /**
@@ -14,7 +14,7 @@ class NumberConverter extends Facade
     */
     protected static function getFacadeAccessor()
     {
-        return 'NumberConverter';
+        return 'LaravelNumberConverter';
     }
 
 }

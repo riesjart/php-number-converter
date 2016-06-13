@@ -1,5 +1,5 @@
 {
-    "name": "bluora/number-converter",
+    "name": "bluora/laravel-number-converter",
     "description": "Number to word, roman, ordinal converter",
     "keywords": ["laravel","numberconverter","roman numerical","ordinal numbers"],
     "license":"MIT",
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "NumberConverter": "src/"
+            "LaravelNumberConverter\\": "src/"
         }
     },
     "minimum-stability": "stable"

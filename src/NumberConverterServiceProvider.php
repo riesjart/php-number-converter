@@ -1,5 +1,5 @@
 <?php
-namespace Riasad\NumberConverter;
+namespace LaravelNumberConverter;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -20,7 +20,7 @@ class NumberConverterServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-        $this->app->bind('NumberConverter', function() {
+        $this->app->bind('LaravelNumberConverter', function() {
             return new NumberConverter;
         });
 	}
