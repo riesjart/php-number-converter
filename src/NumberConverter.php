@@ -75,7 +75,7 @@ class NumberConverter
             return 105;
         }
 
-        if ($type == 'O' && $number < 0) {
+        if ($type == 'o' && $number < 0) {
             return 106;
         }
 
