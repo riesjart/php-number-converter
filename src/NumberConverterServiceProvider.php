@@ -1,8 +1,10 @@
-<?php namespace Riasad\NumberConverter;
+<?php
+namespace Riasad\NumberConverter;
 
 use Illuminate\Support\ServiceProvider;
 
-class NumberConverterServiceProvider extends ServiceProvider {
+class NumberConverterServiceProvider extends ServiceProvider
+{
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -18,8 +20,7 @@ class NumberConverterServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-        $this->app->bind('NumberConverter', function()
-        {
+        $this->app->bind('NumberConverter', function() {
             return new NumberConverter;
         });
 	}
@@ -31,7 +32,7 @@ class NumberConverterServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return [];
 	}
 
 }
