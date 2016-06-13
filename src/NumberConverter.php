@@ -33,8 +33,8 @@ class NumberConverter
         }
         $type = strtolower($type);
 
-        if ($this->checkParamaters($number, $type) > 0) {
-            return self::$error_codes[$check];
+        if (($error_code = $this->checkParamaters($number, $type)) > 0) {
+            return self::$error_codes[$error_code];
         }
 
         switch ($type) {
