@@ -153,7 +153,8 @@ class NumberConverter
         }
 
         if ($under_ten > 0) {
-            $string .= ' '.$under_ten_string;
+            $string .= ($string != '') ? ' ' : '';
+            $string .= $under_ten_string;
         }
 
         return $string;
