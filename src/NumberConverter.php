@@ -116,7 +116,9 @@ class NumberConverter
         $under_ten = (int)substr($number, strlen($number)-1);
         $over_ten = (int)($number-$under_ten);
 
-        $string = $this->convertToWord($over_ten);
+        if ($over_ten > 0) {
+            $string = $this->convertToWord($over_ten);
+        }
 
         switch ($under_ten) {
             case 1:
