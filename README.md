@@ -1,29 +1,30 @@
-### This package is compatible with Laravel 4.2
+### This package is compatible with Laravel 5.*
 
 ## Installation
 
-Begin by installing this package through Composer. Just run following command to terminal-
+Install using composer:
 
 ```
-composer require riasad/number-converter dev-master
+composer require bluora/number-converter dev-master
 ```
 
-Next step is to add the service provider. 
-Open `config/app.php`, and add a new item to the providers array.
+Add the class the service provider. 
+
+In `config/app.php`, update the providers section with:
 
 ```php
 'providers' => array(
     ...
-    'Riasad\NumberConverter\NumberConverterServiceProvider',
+    'NumberConverter\NumberConverterServiceProvider',
 )
 ```
 
-Now add the alias.
+Add an alias for this class:
 
 ```php
 'aliases' => array(
 	...
-	'NumConvert'	  => 'Riasad\NumberConverter\Facades\NumberConverter',
+	'NumConvert'	  => 'NumberConverter\Facades\NumberConverter',
 )
 ```
 
