@@ -2,6 +2,7 @@
 namespace LaravelNumberConverter\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use LaravelNumberConverter\NumberConverter;
 
 class NumberConverterServiceProvider extends ServiceProvider
 {
@@ -20,7 +21,7 @@ class NumberConverterServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-        $this->app->bind('LaravelNumberConverter', function() {
+        $this->app->bind('NumberConverter', function() {
             return new NumberConverter;
         });
 	}

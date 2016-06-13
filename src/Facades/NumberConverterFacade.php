@@ -14,7 +14,7 @@ class NumberConverterFacade extends Facade
     */
     protected static function getFacadeAccessor()
     {
-        return 'LaravelNumberConverter';
+        return 'NumberConverter';
     }
 
 }
