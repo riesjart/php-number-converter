@@ -15,7 +15,7 @@ In `config/app.php`, update the providers section with:
 ```php
 'providers' => array(
     ...
-    'LaravelNumberConverter\NumberConverterServiceProvider',
+    'LaravelNumberConverter\Providers\NumberConverterServiceProvider',
 )
 ```
 
@@ -24,7 +24,7 @@ Add an alias for this class:
 ```php
 'aliases' => array(
 	...
-	'NumConvert'	  => 'LaravelNumberConverter\Facades\NumberConverter',
+	'NumConvert'	  => 'LaravelNumberConverter\Facades\NumberConverterFacade',
 )
 ```
 

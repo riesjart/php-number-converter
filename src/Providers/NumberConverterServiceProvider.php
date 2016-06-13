@@ -1,5 +1,5 @@
 <?php
-namespace LaravelNumberConverter;
+namespace LaravelNumberConverter\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

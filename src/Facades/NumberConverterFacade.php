@@ -4,7 +4,7 @@ namespace LaravelNumberConverter\Facades;
  
 use Illuminate\Support\Facades\Facade;
  
-class LaravelNumberConverter extends Facade
+class NumberConverterFacade extends Facade
 {
  
     /**

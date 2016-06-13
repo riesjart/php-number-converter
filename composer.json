@@ -2,7 +2,7 @@
     "name": "bluora/laravel-number-converter",
     "description": "Number to word, roman, ordinal converter",
     "keywords": ["laravel","numberconverter","roman numerical","ordinal numbers"],
-    "license":"MIT",
+    "license": "MIT",
     "authors": [
         {
             "name": "Riasad Tasha",
@@ -21,6 +21,5 @@
         "psr-4": {
             "LaravelNumberConverter\\": "src/"
         }
-    },
-    "minimum-stability": "stable"
+    }
 }
