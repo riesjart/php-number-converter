@@ -42,6 +42,8 @@ class NumberConverter
                 return $this->convertToWord($number);
             case 'o':
                 return $this->convertToOrdinal($number);
+            case 'n':
+                return $this->convertToNumberOrdinal($number);
             case 'r':
                 return $this->convertToRoman($number);
         }
@@ -63,7 +65,7 @@ class NumberConverter
             return 102;
         }
         
-        if (!($type === 'r' || $type === 'w' || $type === 'o'))  {
+        if (!in_array($type, ['w', 'o', 'n', 'r']))  {
             return 103;
         }
         
@@ -83,12 +85,12 @@ class NumberConverter
     }
 
     /**
-     * Convert number to an ordinal.
+     * Convert number to an ordinal (numerals and letter suffixes).
      * 
      * @param  int $number
      * @return string
      */
-    private function convertToOrdinal($number)
+    private function convertToNumberOrdinal($number)
     {
         if (!in_array(($number % 100), [11,12,13])) {
             switch ($number % 10) {
@@ -101,6 +103,56 @@ class NumberConverter
             }
         }
         return $number.'th';
+    }
+
+    /**
+     * Convert number to an ordinal (letters only).
+     * 
+     * @param  int $number
+     * @return string
+     */
+    private function convertToOrdinal($number)
+    {
+        $under_ten = (int)substr($number, strlen($number)-1);
+        $over_ten = (int)($number-$under-$ten);
+
+        $string = $this->convertToWord($over_ten);
+
+        switch ($under_ten) {
+            case 1:
+                $under_ten_string = 'first';
+                break;
+            case 2:
+                $under_ten_string = 'second';
+                break;
+            case 3:
+                $under_ten_string = 'third';
+                break;
+            case 4:
+                $under_ten_string = 'fourth';
+                break;
+            case 5:
+                $under_ten_string = 'fifth';
+                break;
+            case 6:
+                $under_ten_string = 'sixth';
+                break;
+            case 7:
+                $under_ten_string = 'seventh';
+                break;
+            case 8:
+                $under_ten_string = 'eighth';
+                break;
+            case 9:
+                $under_ten_string = 'ninth';
+                break;
+        }
+
+        if ($under_ten > 0) {
+            $string .= ' '.$under_ten_string;
+        }
+
+        return $string;
     }
 
     /**
