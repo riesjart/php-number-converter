@@ -1,5 +1,5 @@
 {
-    "name": "riasad/number-converter",
+    "name": "bluora/number-converter",
     "description": "Number to word, roman, ordinal converter",
     "keywords": ["laravel","numberconverter","roman numerical","ordinal numbers"],
     "license":"MIT",
@@ -7,6 +7,10 @@
         {
             "name": "Riasad Tasha",
             "email": "saintkabyo@gmail.com"
+        },
+        {
+            "name": "Rocco Howard",
+            "email": "rocco@bluora.com.au"
         }
     ],
     "require": {
