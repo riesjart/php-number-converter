@@ -5,7 +5,7 @@
 Install using composer:
 
 ```
-composer require bluora/number-converter dev-master
+composer require bluora/laravel-number-converter dev-master
 ```
 
 Add the class the service provider. 
@@ -15,7 +15,7 @@ In `config/app.php`, update the providers section with:
 ```php
 'providers' => array(
     ...
-    'NumberConverter\NumberConverterServiceProvider',
+    'LaravelNumberConverter\NumberConverterServiceProvider',
 )
 ```
 
@@ -24,7 +24,7 @@ Add an alias for this class:
 ```php
 'aliases' => array(
 	...
-	'NumConvert'	  => 'NumberConverter\Facades\NumberConverter',
+	'NumConvert'	  => 'LaravelNumberConverter\Facades\NumberConverter',
 )
 ```
 
