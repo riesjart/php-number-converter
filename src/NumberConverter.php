@@ -4,27 +4,27 @@ namespace LaravelNumberConverter;
 
 class NumberConverter
 {
-
     /**
      * Error codes.
-     * 
+     *
      * @var array
      */
     private static $error_codes = [
-        101 => "Error: Please insert a valid number.",
-        102 => "Error: 2nd parameter is required. Ex. convert(21,R).",
+        101 => 'Error: Please insert a valid number.',
+        102 => 'Error: 2nd parameter is required. Ex. convert(21,R).',
         103 => "Error: Invalid 2nd parameter. Use 'R' for Roman, 'W' for Words and 'O' for Ordinal numbers.",
-        104 => "Error: Only integers from 1 to 3999 are convertible into Roman.",
-        105 => "Error: Word converter accepts numbers between -" . PHP_INT_MAX . " and " . PHP_INT_MAX,
+        104 => 'Error: Only integers from 1 to 3999 are convertible into Roman.',
+        105 => 'Error: Word converter accepts numbers between -'.PHP_INT_MAX.' and '.PHP_INT_MAX,
         106 => "Error: Negetive numbers can't have ordinal suffix.",
     ];
 
     /**
      * Covert provided number to requested type.
      *
-     * @param  string $number
-     * @param  string $type
-     * @return string   
+     * @param string $number
+     * @param string $type
+     *
+     * @return string
      */
     public function convert($number = '', $type = '')
     {
@@ -51,29 +51,31 @@ class NumberConverter
 
     /**
      * Check provided paramaters.
-     * 
-     * @param  int $number
-     * @param  string $type
+     *
+     * @param int    $number
+     * @param string $type
+     *
      * @return int
-    */
+     */
     private function checkParamaters($number, $type)
     {
-        if ($number === '' || !is_numeric($number))     
+        if ($number === '' || !is_numeric($number)) {
             return 101;
-        
-        if ($type === '') {                        
+        }
+
+        if ($type === '') {
             return 102;
         }
-        
-        if (!in_array($type, ['w', 'o', 'n', 'r']))  {
+
+        if (!in_array($type, ['w', 'o', 'n', 'r'])) {
             return 103;
         }
-        
-        if ($type == 'r' && (!is_int($number) || $number < 1 || $number > 3999))  {
+
+        if ($type == 'r' && (!is_int($number) || $number < 1 || $number > 3999)) {
             return 104;
         }
-        
-        if ($number > PHP_INT_MAX || $number < 0 - PHP_INT_MAX){
+
+        if ($number > PHP_INT_MAX || $number < 0 - PHP_INT_MAX) {
             return 105;
         }
 
@@ -86,15 +88,16 @@ class NumberConverter
 
     /**
      * Convert number to an ordinal (numerals and letter suffixes).
-     * 
-     * @param  int $number
+     *
+     * @param int $number
+     *
      * @return string
      */
     private function convertToNumberOrdinal($number)
     {
-        if (!in_array(($number % 100), [11,12,13])) {
+        if (!in_array(($number % 100), [11, 12, 13])) {
             switch ($number % 10) {
-                case 1: 
+                case 1:
                     return $number.'st';
                 case 2:
                     return $number.'nd';
@@ -102,19 +105,21 @@ class NumberConverter
                     return $number.'rd';
             }
         }
+
         return $number.'th';
     }
 
     /**
      * Convert number to an ordinal (letters only).
-     * 
-     * @param  int $number
+     *
+     * @param int $number
+     *
      * @return string
      */
     private function convertToOrdinal($number)
     {
-        $under_ten = (int)substr($number, strlen($number)-1);
-        $over_ten = (int)($number-$under_ten);
+        $under_ten = (int) substr($number, strlen($number) - 1);
+        $over_ten = (int) ($number - $under_ten);
 
         $string = '';
 
@@ -163,96 +168,85 @@ class NumberConverter
     /**
      * Convert number to a roman numeral.
      *
-     * @param  int $number
+     * @param int $number
+     *
      * @return string
      */
     private function convertToRoman($number)
     {
-            $roman_number = "";
- 
-            while ($number >= 1000)
-            {
-                $roman_number .= "M";
-                $number -= 1000;
-            }
-            while ($number >= 900)
-            {
-                $roman_number .= "CM";
-                $number -= 900;
-            }
-            while ($number >= 500)
-            {
-                $roman_number .= "D";
-                $number -= 500;
-            }
-            while ($number >= 400)
-            {
-                $roman_number .= "CD";
-                $number -= 400;
-            }
-            while ($number >= 100)
-            {
-                $roman_number .= "C";
-                $number -= 100;
-            }
-            while ($number >= 90)
-            {
-                $roman_number .= "XC";
-                $number -= 90;
-            }
-            while ($number >= 50)
-            {
-                $roman_number .= "L";
-                $number -= 50;
-            }
-            while ($number >= 40)
-            {
-                $roman_number .= "XL";
-                $number -= 40;
-            }
-            while ($number >= 10)
-            {
-                $roman_number .= "X";
-                $number -= 10;
-            }
-            while ($number >= 9)
-            {
-                $roman_number .= "IX";
-                $number -= 9;
-            }
-            while ($number >= 5)
-            {
-                $roman_number .= "V";
-                $number -= 5;
-            }
-            while ($number >= 4)
-            {
-                $roman_number .= "IV";
-                $number -= 4;
-            }
-            while ($number >= 1)
-            {
-                $roman_number .= "I";
-                $number -= 1;
-            }
+        $roman_number = '';
 
-            return $roman_number;
+        while ($number >= 1000) {
+            $roman_number .= 'M';
+            $number -= 1000;
+        }
+        while ($number >= 900) {
+            $roman_number .= 'CM';
+            $number -= 900;
+        }
+        while ($number >= 500) {
+            $roman_number .= 'D';
+            $number -= 500;
+        }
+        while ($number >= 400) {
+            $roman_number .= 'CD';
+            $number -= 400;
+        }
+        while ($number >= 100) {
+            $roman_number .= 'C';
+            $number -= 100;
+        }
+        while ($number >= 90) {
+            $roman_number .= 'XC';
+            $number -= 90;
+        }
+        while ($number >= 50) {
+            $roman_number .= 'L';
+            $number -= 50;
+        }
+        while ($number >= 40) {
+            $roman_number .= 'XL';
+            $number -= 40;
+        }
+        while ($number >= 10) {
+            $roman_number .= 'X';
+            $number -= 10;
+        }
+        while ($number >= 9) {
+            $roman_number .= 'IX';
+            $number -= 9;
+        }
+        while ($number >= 5) {
+            $roman_number .= 'V';
+            $number -= 5;
+        }
+        while ($number >= 4) {
+            $roman_number .= 'IV';
+            $number -= 4;
+        }
+        while ($number >= 1) {
+            $roman_number .= 'I';
+            $number -= 1;
+        }
+
+        return $roman_number;
     }
 
     /**
      * Convert number to a word.
      *
-     * @param  int $number
+     * @param int $number
+     *
      * @return string
      */
     private function convertToWord($number)
     {
-        $hyphen      = '-';
+        $hyphen = '-';
         $conjunction = ' and ';
-        $separator   = ', ';
-        $negative    = 'negative ';
-        $decimal     = ' point ';
-        $dictionary  = [
+        $separator = ', ';
+        $negative = 'negative ';
+        $decimal = ' point ';
+        $dictionary = [
             0                   => 'zero',
             1                   => 'one',
             2                   => 'two',
@@ -287,11 +281,11 @@ class NumberConverter
             1000000000          => 'billion',
             1000000000000       => 'trillion',
             1000000000000000    => 'quadrillion',
-            1000000000000000000 => 'quintillion'
+            1000000000000000000 => 'quintillion',
         ];
 
         if ($number < 0) {
-            return $negative . $this->convertToWord(abs($number));
+            return $negative.$this->convertToWord(abs($number));
         }
 
         $string = $fraction = null;
@@ -305,26 +299,26 @@ class NumberConverter
                 $string = $dictionary[$number];
                 break;
             case $number < 100:
-                $tens   = ((int) ($number / 10)) * 10;
-                $units  = $number % 10;
+                $tens = ((int) ($number / 10)) * 10;
+                $units = $number % 10;
                 $string = $dictionary[$tens];
                 if ($units) {
-                    $string .= $hyphen . $dictionary[$units];
+                    $string .= $hyphen.$dictionary[$units];
                 }
                 break;
             case $number < 1000:
-                $hundreds  = $number / 100;
+                $hundreds = $number / 100;
                 $remainder = $number % 100;
-                $string = $dictionary[$hundreds] . ' ' . $dictionary[100];
+                $string = $dictionary[$hundreds].' '.$dictionary[100];
                 if ($remainder) {
-                    $string .= $conjunction . $this->convert_to_word($remainder);
+                    $string .= $conjunction.$this->convert_to_word($remainder);
                 }
                 break;
             default:
                 $baseUnit = pow(1000, floor(log($number, 1000)));
                 $numBaseUnits = (int) ($number / $baseUnit);
                 $remainder = $number % $baseUnit;
-                $string = $this->convert_to_word($numBaseUnits) . ' ' . $dictionary[$baseUnit];
+                $string = $this->convert_to_word($numBaseUnits).' '.$dictionary[$baseUnit];
                 if ($remainder) {
                     $string .= $remainder < 100 ? $conjunction : $separator;
                     $string .= $this->convert_to_word($remainder);
@@ -343,5 +337,4 @@ class NumberConverter
 
         return $string;
     }
-
 }
