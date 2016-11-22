@@ -1,48 +1,64 @@
-### This package is compatible with Laravel 5.*
+# PHP Number Converter
 
-## Installation
+This package has been forked from [saintkabyo/number-converter](https://github.com/saintkabyo/number-converter) and further developed by H&H|Digital, an Australian botique developer. Visit us at [hnh.digital](http://hnh.digital).
 
-Install using composer:
+[![Latest Stable Version](https://poser.pugx.org/bluora/php-number-converter/v/stable.svg)](https://packagist.org/packages/bluora/php-number-converter) [![Total Downloads](https://poser.pugx.org/bluora/php-number-converter/downloads.svg)](https://packagist.org/packages/bluora/php-number-converter) [![Latest Unstable Version](https://poser.pugx.org/bluora/php-number-converter/v/unstable.svg)](https://packagist.org/packages/bluora/php-number-converter) [![License](https://poser.pugx.org/bluora/php-number-converter/license.svg)](https://packagist.org/packages/bluora/php-number-converter)
 
-```
-composer require bluora/laravel-number-converter dev-master
-```
+[![Build Status](https://travis-ci.org/bluora/php-number-converter.svg?branch=master)](https://travis-ci.org/bluora/php-number-converter) [![StyleCI](https://styleci.io/repos/x/shield?branch=master)](https://styleci.io/repos/x) [![Test Coverage](https://codeclimate.com/github/bluora/php-number-converter/badges/coverage.svg)](https://codeclimate.com/github/bluora/php-number-converter/coverage) [![Issue Count](https://codeclimate.com/github/bluora/php-number-converter/badges/issue_count.svg)](https://codeclimate.com/github/bluora/php-number-converter) [![Code Climate](https://codeclimate.com/github/bluora/php-number-converter/badges/gpa.svg)](https://codeclimate.com/github/bluora/php-number-converter)
 
-Add the class the service provider. 
+This package provides the ability to convert a numberical number to a word, roman numeral and an ordinal suffix.
 
-In `config/app.php`, update the providers section with:
+## Install
+
+Via composer:
+
+`$ composer require bluora/php-number-converter dev-master`
+
+## Usage
+
+### Convert to word
+
+Supported number range -2147483647 to 2147483647.
 
 ```php
-'providers' => array(
-    ...
-    'LaravelNumberConverter\Providers\NumberConverterServiceProvider',
-)
+use Bluora/PhpNumberConverter;
+
+$number_converter = new NumberConverter();
+echo $number_converter->convert(122, 'W');
 ```
 
-Add an alias for this class:
+### Convert to roman
+
+Supported number range 1 to 3999.
 
 ```php
-'aliases' => array(
-	...
-	'NumConvert'	  => 'LaravelNumberConverter\Facades\NumberConverterFacade',
-)
+use Bluora/PhpNumberConverter;
+
+$number_converter = new NumberConverter();
+echo $number_converter->convert(122, 'R');
 ```
 
-##Instructions
-Convert to word
-(Supported number range -2147483647 to 2147483647)
+### Ordinal suffix
+
+Supported number range 1 to 2147483647.
+
 ```php
-echo NumConvert::convert(122,'W');
+use Bluora/PhpNumberConverter;
+
+$number_converter = new NumberConverter();
+echo $number_converter->convert(122, 'O');
 ```
 
-Convert to roman
-(Supported number range 1 to 3999)
-```php
-echo NumConvert::convert(122,'R');
-```
+## Contributing
 
-Ordinal suffix
-(Supported number range 1 to 2147483647)
-```php
-echo NumConvert::convert(122,'O');
-```
+Please see [CONTRIBUTING](https://github.com/bluora/php-number-converter/blob/master/CONTRIBUTING.md) for details.
+
+## Credits
+
+* Forked from [saintkabyo/number-converter](https://github.com/saintkabyo/number-converter)
+* [Rocco Howard](https://github.com/therocis)
+* [All Contributors](https://github.com/bluora/laravel-number-converter/contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](https://github.com/bluora/laravel-number-converter/blob/master/LICENSE) for more information.
