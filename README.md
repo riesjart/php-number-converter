@@ -6,7 +6,7 @@ This package has been forked from [saintkabyo/number-converter](https://github.c
 
 [![Build Status](https://travis-ci.org/bluora/php-number-converter.svg?branch=master)](https://travis-ci.org/bluora/php-number-converter) [![StyleCI](https://styleci.io/repos/x/shield?branch=master)](https://styleci.io/repos/x) [![Test Coverage](https://codeclimate.com/github/bluora/php-number-converter/badges/coverage.svg)](https://codeclimate.com/github/bluora/php-number-converter/coverage) [![Issue Count](https://codeclimate.com/github/bluora/php-number-converter/badges/issue_count.svg)](https://codeclimate.com/github/bluora/php-number-converter) [![Code Climate](https://codeclimate.com/github/bluora/php-number-converter/badges/gpa.svg)](https://codeclimate.com/github/bluora/php-number-converter)
 
-This package provides the ability to convert a numberical number to a word, roman numeral and an ordinal suffix.
+This package provides the ability to convert a numerical number to a word, roman numeral and an ordinal suffix.
 
 ## Install
 
