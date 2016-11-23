@@ -8,6 +8,8 @@ This package has been forked from [saintkabyo/number-converter](https://github.c
 
 This package provides the ability to convert a numerical number to a word, roman numeral and an ordinal suffix.
 
+If you are using this package in Laravel, use the [Laravel-Number-Converter](https://github.com/bluora/laravel-number-converter) package.
+
 ## Install
 
 Via composer:
