@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelNumberConverter;
+namespace Bluora\PhpNumberConverter;
 
 class NumberConverter
 {
