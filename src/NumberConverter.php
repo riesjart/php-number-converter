@@ -31,13 +31,8 @@ class NumberConverter
         if (strlen($type) > 1) {
             $type = $type[0];
         }
-        $type = strtolower($type);
 
-        if (($error_code = $this->checkParamaters($number, $type)) > 0) {
-            return self::$error_codes[$error_code];
-        }
-
-        switch ($type) {
+        switch (strtolower($type)) {
             case 'w':
                 return $this->convertToWord($number);
             case 'o':
@@ -95,6 +90,10 @@ class NumberConverter
      */
     private function convertToNumberOrdinal($number)
     {
+        if (($error_code = $this->checkParamaters($number, 'n')) > 0) {
+            return self::$error_codes[$error_code];
+        }
+
         if (!in_array(($number % 100), [11, 12, 13])) {
             switch ($number % 10) {
                 case 1:
@@ -110,6 +109,18 @@ class NumberConverter
     }
 
     /**
+     * Alias to convertToOrdinal
+     *
+     * @param int $number
+     *
+     * @return string
+     */
+    public function numberOrdinal($number)
+    {
+        return $this->convertToNumberOrdinal($number);
+    }
+
+    /**
      * Convert number to an ordinal (letters only).
      *
      * @param int $number
@@ -118,6 +129,10 @@ class NumberConverter
      */
     private function convertToOrdinal($number)
     {
+        if (($error_code = $this->checkParamaters($number, 'o')) > 0) {
+            return self::$error_codes[$error_code];
+        }
+
         $under_ten = (int) substr($number, strlen($number) - 1);
         $over_ten = (int) ($number - $under_ten);
 
@@ -166,6 +181,18 @@ class NumberConverter
     }
 
     /**
+     * Alias to convertToOrdinal
+     *
+     * @param int $number
+     *
+     * @return string
+     */
+    public function ordinal($number)
+    {
+        return $this->convertToOrdinal($number);
+    }
+
+    /**
      * Convert number to a roman numeral.
      *
      * @param int $number
@@ -174,6 +201,10 @@ class NumberConverter
      */
     private function convertToRoman($number)
     {
+        if (($error_code = $this->checkParamaters($number, 'r')) > 0) {
+            return self::$error_codes[$error_code];
+        }
+
         $roman_number = '';
 
         while ($number >= 1000) {
@@ -233,6 +264,18 @@ class NumberConverter
     }
 
     /**
+     * Alias to convertToRoman
+     *
+     * @param int $number
+     *
+     * @return string
+     */
+    public function roman($number)
+    {
+        return $this->convertToRoman($number);
+    }
+
+    /**
      * Convert number to a word.
      *
      * @param int $number
@@ -241,6 +284,10 @@ class NumberConverter
      */
     private function convertToWord($number)
     {
+        if (($error_code = $this->checkParamaters($number, 'w')) > 0) {
+            return self::$error_codes[$error_code];
+        }
+
         $hyphen = '-';
         $conjunction = ' and ';
         $separator = ', ';
@@ -336,5 +383,17 @@ class NumberConverter
         }
 
         return $string;
+    }
+
+    /**
+     * Alias to convertToWord
+     *
+     * @param int $number
+     *
+     * @return string
+     */
+    public function word($number)
+    {
+        return $this->convertToWord($number);
     }
 }
