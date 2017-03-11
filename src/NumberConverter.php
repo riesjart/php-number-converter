@@ -358,17 +358,17 @@ class NumberConverter
                 $remainder = $number % 100;
                 $string = $dictionary[$hundreds].' '.$dictionary[100];
                 if ($remainder) {
-                    $string .= $conjunction.$this->convert_to_word($remainder);
+                    $string .= $conjunction.$this->convertToWord($remainder);
                 }
                 break;
             default:
                 $baseUnit = pow(1000, floor(log($number, 1000)));
                 $numBaseUnits = (int) ($number / $baseUnit);
                 $remainder = $number % $baseUnit;
-                $string = $this->convert_to_word($numBaseUnits).' '.$dictionary[$baseUnit];
+                $string = $this->convertToWord($numBaseUnits).' '.$dictionary[$baseUnit];
                 if ($remainder) {
                     $string .= $remainder < 100 ? $conjunction : $separator;
-                    $string .= $this->convert_to_word($remainder);
+                    $string .= $this->convertToWord($remainder);
                 }
                 break;
         }
