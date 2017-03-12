@@ -109,7 +109,7 @@ class NumberConverter
     }
 
     /**
-     * Alias to convertToOrdinal
+     * Alias to convertToOrdinal.
      *
      * @param int $number
      *
@@ -181,7 +181,7 @@ class NumberConverter
     }
 
     /**
-     * Alias to convertToOrdinal
+     * Alias to convertToOrdinal.
      *
      * @param int $number
      *
@@ -264,7 +264,7 @@ class NumberConverter
     }
 
     /**
-     * Alias to convertToRoman
+     * Alias to convertToRoman.
      *
      * @param int $number
      *
@@ -386,7 +386,7 @@ class NumberConverter
     }
 
     /**
-     * Alias to convertToWord
+     * Alias to convertToWord.
      *
      * @param int $number
      *
