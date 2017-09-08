@@ -1,5 +1,5 @@
 {
-    "name": "bluora/php-number-converter",
+    "name": "hnhdigital-os/php-number-converter",
     "description": "Number to word, roman, ordinal converter",
     "keywords": ["number","converter","roman","ordinal","word"],
     "license": "MIT",
@@ -10,7 +10,7 @@
         },
         {
             "name": "Rocco Howard",
-            "email": "rocco@bluora.com.au"
+            "email": "rocco@hnh.digital"
         }
     ],
     "require": {
