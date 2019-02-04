@@ -144,7 +144,7 @@ class NumberConverter
 
         // Numbers between 20 and 99.
         if ($big_number > 0 && $number > 19 && $number < 100) {
-           return $this->convertToWord($big_number).' '.$this->convertToOrdinal($small_number);
+            return $this->convertToWord($big_number).' '.$this->convertToOrdinal($small_number);
         }
 
         // Numbers over 100.
