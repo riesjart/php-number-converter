@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class NumberConverterTest extends TestCase
 {
-
     public function testNumber()
     {
         $converter = new NumberConverter();
