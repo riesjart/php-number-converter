@@ -1,8 +1,6 @@
 # PHP Number Converter
 
-This package provides the ability to convert a numerical number to a word, roman numeral and an ordinal suffix.
-
-If you are using this package in Laravel, use the [Laravel-Number-Converter](https://github.com/hnhdigital-os/laravel-number-converter) package.
+This package provides the ability to convert a numerical number to a word, roman numeral, or include the ordinal suffix.
 
 [![Latest Stable Version](https://poser.pugx.org/hnhdigital-os/php-number-converter/v/stable.svg)](https://packagist.org/packages/hnhdigital-os/php-number-converter) [![Total Downloads](https://poser.pugx.org/hnhdigital-os/php-number-converter/downloads.svg)](https://packagist.org/packages/hnhdigital-os/php-number-converter) [![Latest Unstable Version](https://poser.pugx.org/hnhdigital-os/php-number-converter/v/unstable.svg)](https://packagist.org/packages/hnhdigital-os/php-number-converter) [![License](https://poser.pugx.org/hnhdigital-os/php-number-converter/license.svg)](https://packagist.org/packages/hnhdigital-os/php-number-converter)
 
@@ -10,13 +8,11 @@ If you are using this package in Laravel, use the [Laravel-Number-Converter](htt
 
 This package has been forked from [saintkabyo/number-converter](https://github.com/saintkabyo/number-converter) and further developed by H&H|Digital, an Australian botique developer. Visit us at [hnh.digital](http://hnh.digital).
 
-
-
 ## Install
 
 Via composer:
 
-`$ composer require hnhdigital-os/php-number-converter dev-master`
+`$ composer require hnhdigital-os/php-number-converter`
 
 ## Usage
 
@@ -25,9 +21,13 @@ Via composer:
 Supported number range -2147483647 to 2147483647.
 
 ```php
-use Bluora/PhpNumberConverter;
+use HnhDigital/PhpNumberConverter;
 
-echo (new NumberConverter())->word(122);
+echo (new NumberConverter())->word(1);
+```
+
+```
+one
 ```
 
 ### Convert to roman
@@ -35,9 +35,13 @@ echo (new NumberConverter())->word(122);
 Supported number range 1 to 3999.
 
 ```php
-use Bluora/PhpNumberConverter;
+use HnhDigital/PhpNumberConverter;
 
-echo (new NumberConverter())->roman(122);
+echo (new NumberConverter())->roman(1);
+```
+
+```
+I
 ```
 
 ### Ordinal suffix
@@ -45,10 +49,18 @@ echo (new NumberConverter())->roman(122);
 Supported number range 1 to 2147483647.
 
 ```php
-use Bluora/PhpNumberConverter;
+use HnhDigital/PhpNumberConverter;
 
-echo (new NumberConverter())->ordinal(122);
+echo (new NumberConverter())->ordinal(1);
 ```
+
+```
+1st
+```
+
+## Frameworks
+
+* [Laravel-Number-Converter](https://github.com/hnhdigital-os/laravel-number-converter)
 
 ## Contributing
 
