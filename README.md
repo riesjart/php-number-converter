@@ -44,14 +44,28 @@ echo (new NumberConverter())->roman(1);
 I
 ```
 
-### Ordinal suffix
+### Ordinal (word + suffix)
 
 Supported number range 1 to 2147483647.
 
 ```php
 use HnhDigital/PhpNumberConverter;
 
-echo (new NumberConverter())->ordinal(1);
+echo (new NumberConverter())->wordOrdinal(1);
+```
+
+```
+first
+```
+
+### Ordinal (number + suffix)
+
+Supported number range 1 to 2147483647.
+
+```php
+use HnhDigital/PhpNumberConverter;
+
+echo (new NumberConverter())->numberOrdinal(1);
 ```
 
 ```
