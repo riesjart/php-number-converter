@@ -1,6 +1,6 @@
 <?php
 
-namespace Bluora\PhpNumberConverter;
+namespace HnhDigital\PhpNumberConverter;
 
 class NumberConverter
 {
@@ -94,6 +94,10 @@ class NumberConverter
             return self::$error_codes[$error_code];
         }
 
+        if ($number === 0) {
+            return 0;
+        }
+
         if (!in_array(($number % 100), [11, 12, 13])) {
             switch ($number % 10) {
                 case 1:
@@ -133,48 +137,69 @@ class NumberConverter
             return self::$error_codes[$error_code];
         }
 
-        $under_ten = (int) substr($number, strlen($number) - 1);
-        $over_ten = (int) ($number - $under_ten);
+        $small_number = (int) substr($number, strlen($number) - 1);
+        $big_number = (int) ($number - $small_number);
 
         $string = '';
 
-        if ($over_ten > 0) {
-            $string = $this->convertToWord($over_ten);
+        // Numbers between 20 and 99.
+        if ($big_number > 0 && $number > 19 && $number < 100) {
+           return $this->convertToWord($big_number).' '.$this->convertToOrdinal($small_number);
         }
 
-        switch ($under_ten) {
+        // Numbers over 100.
+        if ($number >= 100) {
+            $string = $this->convertToWord(str_pad(substr($number, 0, 1), strlen($number), '0')).'th';
+
+            if ($small_number > 0) {
+                $string .= ' and '.$this->convertToWord($small_number);
+            }
+
+            return $string;
+        }
+
+        // Numbers 0-19.
+        switch ($number) {
+            case 0:
+                return $small_number_string = 'zero';
             case 1:
-                $under_ten_string = 'first';
-                break;
+                return $small_number_string = 'first';
             case 2:
-                $under_ten_string = 'second';
-                break;
+                return $small_number_string = 'second';
             case 3:
-                $under_ten_string = 'third';
-                break;
+                return $small_number_string = 'third';
             case 4:
-                $under_ten_string = 'fourth';
-                break;
+                return $small_number_string = 'fourth';
             case 5:
-                $under_ten_string = 'fifth';
-                break;
+                return $small_number_string = 'fifth';
             case 6:
-                $under_ten_string = 'sixth';
-                break;
+                return $small_number_string = 'sixth';
             case 7:
-                $under_ten_string = 'seventh';
-                break;
+                return $small_number_string = 'seventh';
             case 8:
-                $under_ten_string = 'eighth';
-                break;
+                return $small_number_string = 'eighth';
             case 9:
-                $under_ten_string = 'ninth';
-                break;
-        }
-
-        if ($under_ten > 0) {
-            $string .= ($string != '') ? ' ' : '';
-            $string .= $under_ten_string;
+                return $small_number_string = 'ninth';
+            case 10:
+                return $small_number_string = 'tenth';
+            case 11:
+                return $small_number_string = 'eleventh';
+            case 12:
+                return $small_number_string = 'twelth';
+            case 13:
+                return $small_number_string = 'thirteen';
+            case 14:
+                return $small_number_string = 'fourteenth';
+            case 15:
+                return $small_number_string = 'fifteenth';
+            case 16:
+                return $small_number_string = 'sixteenth';
+            case 17:
+                return $small_number_string = 'seventeenth';
+            case 18:
+                return $small_number_string = 'eighteenth';
+            case 19:
+                return $small_number_string = 'nineteenth';
         }
 
         return $string;
@@ -188,6 +213,18 @@ class NumberConverter
      * @return string
      */
     public function ordinal($number)
+    {
+        return $this->convertToOrdinal($number);
+    }
+
+    /**
+     * Alias to convertToOrdinal.
+     *
+     * @param int $number
+     *
+     * @return string
+     */
+    public function wordOrdinal($number)
     {
         return $this->convertToOrdinal($number);
     }
