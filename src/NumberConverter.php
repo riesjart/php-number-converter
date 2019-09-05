@@ -2,6 +2,9 @@
 
 namespace HnhDigital\PhpNumberConverter;
 
+/**
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ */
 class NumberConverter
 {
     /**
@@ -12,10 +15,82 @@ class NumberConverter
     private static $error_codes = [
         101 => 'Error: Please insert a valid number.',
         102 => 'Error: 2nd parameter is required. Ex. convert(21,R).',
-        103 => "Error: Invalid 2nd parameter. Use 'R' for roman, 'W' for words, 'N' for number ordinals, and 'O' for worded ordinal.",
+        103 => "Error: Invalid 2nd parameter. Use 'R' for roman, 'W' for words,
+                'N' for number ordinals, and 'O' for worded ordinal.",
         104 => 'Error: Only integers from 1 to 3999 are convertible into Roman.',
         105 => 'Error: Word converter accepts numbers between -'.PHP_INT_MAX.' and '.PHP_INT_MAX,
         106 => "Error: Negative numbers can't have ordinal suffix.",
+    ];
+
+    /**
+     * Small number string matches.
+     *
+     * @var string
+     */
+    private $small_number_string = [
+        0 => 'zero',
+        1 => 'first',
+        2 => 'second',
+        3 => 'third',
+        4 => 'fourth',
+        5 => 'fifth',
+        6 => 'sixth',
+        7 => 'seventh',
+        8 => 'eighth',
+        9 => 'ninth',
+        10 => 'tenth',
+        11 => 'eleventh',
+        12 => 'twelth',
+        13 => 'thirteen',
+        14 => 'fourteenth',
+        15 => 'fifteenth',
+        16 => 'sixteenth',
+        17 => 'seventeenth',
+        18 => 'eighteenth',
+        19 => 'nineteenth',
+    ];
+
+    /**
+     * Word dictionary.
+     *
+     * @var array
+     */
+    private $word_dictionary = [
+        0                   => 'zero',
+        1                   => 'one',
+        2                   => 'two',
+        3                   => 'three',
+        4                   => 'four',
+        5                   => 'five',
+        6                   => 'six',
+        7                   => 'seven',
+        8                   => 'eight',
+        9                   => 'nine',
+        10                  => 'ten',
+        11                  => 'eleven',
+        12                  => 'twelve',
+        13                  => 'thirteen',
+        14                  => 'fourteen',
+        15                  => 'fifteen',
+        16                  => 'sixteen',
+        17                  => 'seventeen',
+        18                  => 'eighteen',
+        19                  => 'nineteen',
+        20                  => 'twenty',
+        30                  => 'thirty',
+        40                  => 'fourty',
+        50                  => 'fifty',
+        60                  => 'sixty',
+        70                  => 'seventy',
+        80                  => 'eighty',
+        90                  => 'ninety',
+        100                 => 'hundred',
+        1000                => 'thousand',
+        1000000             => 'million',
+        1000000000          => 'billion',
+        1000000000000       => 'trillion',
+        1000000000000000    => 'quadrillion',
+        1000000000000000000 => 'quintillion',
     ];
 
     /**
@@ -51,6 +126,9 @@ class NumberConverter
      * @param string $type
      *
      * @return int
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
      */
     private function checkParamaters($number, $type)
     {
@@ -90,7 +168,9 @@ class NumberConverter
      */
     private function convertToNumberOrdinal($number)
     {
-        if (($error_code = $this->checkParamaters($number, 'n')) > 0) {
+        $error_code = $this->checkParamaters($number, 'n');
+
+        if ($error_code > 0) {
             return self::$error_codes[$error_code];
         }
 
@@ -130,10 +210,14 @@ class NumberConverter
      * @param int $number
      *
      * @return string
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     private function convertToOrdinal($number)
     {
-        if (($error_code = $this->checkParamaters($number, 'o')) > 0) {
+        $error_code = $this->checkParamaters($number, 'o');
+
+        if ($error_code > 0) {
             return self::$error_codes[$error_code];
         }
 
@@ -158,51 +242,7 @@ class NumberConverter
             return $string;
         }
 
-        // Numbers 0-19.
-        switch ($number) {
-            case 0:
-                return $small_number_string = 'zero';
-            case 1:
-                return $small_number_string = 'first';
-            case 2:
-                return $small_number_string = 'second';
-            case 3:
-                return $small_number_string = 'third';
-            case 4:
-                return $small_number_string = 'fourth';
-            case 5:
-                return $small_number_string = 'fifth';
-            case 6:
-                return $small_number_string = 'sixth';
-            case 7:
-                return $small_number_string = 'seventh';
-            case 8:
-                return $small_number_string = 'eighth';
-            case 9:
-                return $small_number_string = 'ninth';
-            case 10:
-                return $small_number_string = 'tenth';
-            case 11:
-                return $small_number_string = 'eleventh';
-            case 12:
-                return $small_number_string = 'twelth';
-            case 13:
-                return $small_number_string = 'thirteen';
-            case 14:
-                return $small_number_string = 'fourteenth';
-            case 15:
-                return $small_number_string = 'fifteenth';
-            case 16:
-                return $small_number_string = 'sixteenth';
-            case 17:
-                return $small_number_string = 'seventeenth';
-            case 18:
-                return $small_number_string = 'eighteenth';
-            case 19:
-                return $small_number_string = 'nineteenth';
-        }
-
-        return $string;
+        return $this->small_number_string[$number];
     }
 
     /**
@@ -235,10 +275,15 @@ class NumberConverter
      * @param int $number
      *
      * @return string
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
      */
     private function convertToRoman($number)
     {
-        if (($error_code = $this->checkParamaters($number, 'r')) > 0) {
+        $error_code = $this->checkParamaters($number, 'r');
+
+        if ($error_code > 0) {
             return self::$error_codes[$error_code];
         }
 
@@ -248,50 +293,62 @@ class NumberConverter
             $roman_number .= 'M';
             $number -= 1000;
         }
+
         while ($number >= 900) {
             $roman_number .= 'CM';
             $number -= 900;
         }
+
         while ($number >= 500) {
             $roman_number .= 'D';
             $number -= 500;
         }
+
         while ($number >= 400) {
             $roman_number .= 'CD';
             $number -= 400;
         }
+
         while ($number >= 100) {
             $roman_number .= 'C';
             $number -= 100;
         }
+
         while ($number >= 90) {
             $roman_number .= 'XC';
             $number -= 90;
         }
+
         while ($number >= 50) {
             $roman_number .= 'L';
             $number -= 50;
         }
+
         while ($number >= 40) {
             $roman_number .= 'XL';
             $number -= 40;
         }
+
         while ($number >= 10) {
             $roman_number .= 'X';
             $number -= 10;
         }
+
         while ($number >= 9) {
             $roman_number .= 'IX';
             $number -= 9;
         }
+
         while ($number >= 5) {
             $roman_number .= 'V';
             $number -= 5;
         }
+
         while ($number >= 4) {
             $roman_number .= 'IV';
             $number -= 4;
         }
+
         while ($number >= 1) {
             $roman_number .= 'I';
             $number -= 1;
@@ -318,10 +375,15 @@ class NumberConverter
      * @param int $number
      *
      * @return string
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
      */
     private function convertToWord($number)
     {
-        if (($error_code = $this->checkParamaters($number, 'w')) > 0) {
+        $error_code = $this->checkParamaters($number, 'w');
+
+        if ($error_code > 0) {
             return self::$error_codes[$error_code];
         }
 
@@ -330,43 +392,6 @@ class NumberConverter
         $separator = ', ';
         $negative = 'negative ';
         $decimal = ' point ';
-        $dictionary = [
-            0                   => 'zero',
-            1                   => 'one',
-            2                   => 'two',
-            3                   => 'three',
-            4                   => 'four',
-            5                   => 'five',
-            6                   => 'six',
-            7                   => 'seven',
-            8                   => 'eight',
-            9                   => 'nine',
-            10                  => 'ten',
-            11                  => 'eleven',
-            12                  => 'twelve',
-            13                  => 'thirteen',
-            14                  => 'fourteen',
-            15                  => 'fifteen',
-            16                  => 'sixteen',
-            17                  => 'seventeen',
-            18                  => 'eighteen',
-            19                  => 'nineteen',
-            20                  => 'twenty',
-            30                  => 'thirty',
-            40                  => 'fourty',
-            50                  => 'fifty',
-            60                  => 'sixty',
-            70                  => 'seventy',
-            80                  => 'eighty',
-            90                  => 'ninety',
-            100                 => 'hundred',
-            1000                => 'thousand',
-            1000000             => 'million',
-            1000000000          => 'billion',
-            1000000000000       => 'trillion',
-            1000000000000000    => 'quadrillion',
-            1000000000000000000 => 'quintillion',
-        ];
 
         if ($number < 0) {
             return $negative.$this->convertToWord(abs($number));
@@ -380,20 +405,20 @@ class NumberConverter
 
         switch (true) {
             case $number < 21:
-                $string = $dictionary[$number];
+                $string = $this->word_dictionary[$number];
                 break;
             case $number < 100:
                 $tens = ((int) ($number / 10)) * 10;
                 $units = $number % 10;
-                $string = $dictionary[$tens];
+                $string = $this->word_dictionary[$tens];
                 if ($units) {
-                    $string .= $hyphen.$dictionary[$units];
+                    $string .= $hyphen.$this->word_dictionary[$units];
                 }
                 break;
             case $number < 1000:
                 $hundreds = $number / 100;
                 $remainder = $number % 100;
-                $string = $dictionary[$hundreds].' '.$dictionary[100];
+                $string = $this->word_dictionary[$hundreds].' '.$this->word_dictionary[100];
                 if ($remainder) {
                     $string .= $conjunction.$this->convertToWord($remainder);
                 }
@@ -402,7 +427,7 @@ class NumberConverter
                 $baseUnit = pow(1000, floor(log($number, 1000)));
                 $numBaseUnits = (int) ($number / $baseUnit);
                 $remainder = $number % $baseUnit;
-                $string = $this->convertToWord($numBaseUnits).' '.$dictionary[$baseUnit];
+                $string = $this->convertToWord($numBaseUnits).' '.$this->word_dictionary[$baseUnit];
                 if ($remainder) {
                     $string .= $remainder < 100 ? $conjunction : $separator;
                     $string .= $this->convertToWord($remainder);
@@ -414,7 +439,7 @@ class NumberConverter
             $string .= $decimal;
             $words = [];
             foreach (str_split((string) $fraction) as $number) {
-                $words[] = $dictionary[$number];
+                $words[] = $this->word_dictionary[$number];
             }
             $string .= implode(' ', $words);
         }
