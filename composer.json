@@ -34,7 +34,7 @@
     },
     "scripts": {
         "test": [
-            "composer phpunit && composer phpcs && composer phpmd"
+            "composer phpunit & composer phpcs & composer phpmd"
         ],
         "phpunit": [
             "phpunit"
