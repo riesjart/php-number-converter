@@ -40,7 +40,7 @@ class NumberConverter
         9  => 'ninth',
         10 => 'tenth',
         11 => 'eleventh',
-        12 => 'twelth',
+        12 => 'twelfth',
         13 => 'thirteen',
         14 => 'fourteenth',
         15 => 'fifteenth',
